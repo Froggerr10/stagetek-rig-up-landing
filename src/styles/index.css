@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --stagetek-red-primary: #e90101;
+  --stagetek-red-medium: #862128;
+  --stagetek-red-dark: #63141a;
+  --stagetek-white: #fbfafb;
+  --stagetek-black: #000;
+  --stagetek-gray: #727272;
+  --stagetek-gray-light: #323132;
+  --stagetek-success: #28a745;
+  --radius: 14px;
+  --shadow-lg: 0 10px 30px rgba(0,0,0,.35);
+  --transition: .2s ease;
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center gap-2 px-4 py-3 rounded-brand font-semibold transition-all duration-brand no-underline;
+  }
+
+  .btn-sm {
+    @apply px-3 py-2 text-sm;
+    border-radius: 12px;
+  }
+
+  .btn-primary {
+    background: var(--stagetek-red-primary);
+    color: var(--stagetek-white);
+  }
+
+  .btn-primary:hover {
+    background: var(--stagetek-red-dark);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--stagetek-red-primary);
+    border: 2px solid var(--stagetek-red-primary);
+  }
+
+  .btn-outline:hover {
+    background: var(--stagetek-red-primary);
+    color: #fff;
+  }
+
+  .btn-outline-inverse {
+    background: transparent;
+    color: #fff;
+    border: 2px solid rgba(255,255,255,.85);
+  }
+
+  .btn-outline-inverse:hover {
+    background: rgba(255,255,255,.10);
+  }
+
+  .text-brand {
+    color: var(--stagetek-red-primary);
+  }
+
+  .metal-sheen {
+    background: linear-gradient(135deg,#0b0f1a 0%,#1a2233 40%,#0b0f1a 100%);
+  }
+
+  .grain {
+    background-image: radial-gradient(rgba(255,255,255,.06),transparent 45%);
+  }
+
+  .card-hover {
+    transition: transform var(--transition);
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px);
+  }
+
+  .hero-img {
+    object-position: center center;
+    object-fit: cover;
+  }
+
+  @media (min-width: 768px) {
+    .hero-img {
+      object-position: 70% center;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-img {
+      object-position: 75% center;
+    }
+  }
+
+  .hero-overlay {
+    background: linear-gradient(90deg, rgba(11,12,16,.34) 0%, rgba(11,12,16,.16) 24%, transparent 52%);
+  }
+
+  .hero-smoke,
+  .products-smoke {
+    position: relative;
+  }
+
+  .hero-smoke::before {
+    content: "";
+    position: absolute;
+    inset: -20%;
+    background:
+      radial-gradient(closest-side at 20% 30%, rgba(180,200,255,.20), transparent 60%),
+      radial-gradient(closest-side at 80% 45%, rgba(160,180,220,.18), transparent 55%),
+      radial-gradient(closest-side at 50% 80%, rgba(255,255,255,.06), transparent 60%);
+    filter: blur(60px);
+    opacity: .30;
+    animation: drift 22s ease-in-out infinite alternate;
+  }
+
+  .products-smoke::before {
+    content: "";
+    position: absolute;
+    inset: -25% -15% -10% -15%;
+    background:
+      radial-gradient(closest-side at 15% 70%, rgba(99,20,26,.40), transparent 60%),
+      radial-gradient(closest-side at 85% 30%, rgba(134,33,40,.28), transparent 55%),
+      radial-gradient(closest-side at 50% 40%, rgba(255,255,255,.06), transparent 60%);
+    filter: blur(70px);
+    opacity: .55;
+    animation: drift2 26s ease-in-out infinite alternate;
+  }
+
+  @keyframes drift {
+    from { transform: translateY(0) scale(1); }
+    to { transform: translateY(-8%) scale(1.05); }
+  }
+
+  @keyframes drift2 {
+    from { transform: translateX(0); }
+    to { transform: translateX(-3%); }
+  }
+
+  .immersive .hide-immersive {
+    display: none;
+  }
+
+  .immersive .hero-full {
+    min-height: 100vh;
+    padding-top: 12vh;
+    padding-bottom: 12vh;
+  }
+}
